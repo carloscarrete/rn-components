@@ -4,6 +4,8 @@ import CustomView from '../../components/ui/CustomView'
 import Title from '../../components/ui/Title'
 import { globalStyles } from '../../../config/theme/theme'
 import Button from '../../components/ui/Button'
+import prompt from 'react-native-prompt-android';
+import { showPrompt } from '../../../config/adapters/prompt.adapter'
 
 const AlertScreen = () => {
 
@@ -28,13 +30,24 @@ const AlertScreen = () => {
         )
     }
 
+        const onShowPrompt = () => {
+            showPrompt({
+                title: 'Pumas',
+                text: 'De mi vida',
+                buttons: [
+                    { text: 'Cancel', onPress: (password: string) => console.log('Cancel Pressed'), style: 'cancel' },
+                    { text: 'OK', onPress: (password: string) => console.log('OK Pressed, password: ' + password) }
+                ]
+            })
+        }
+
   return (
     <CustomView style={globalStyles.globalMargin}>
       <Title safe text='Alertas' />
 
       <Button text='Alerta - 2 botones' onPress={createTwoButtonAlert} styles={{marginBottom: 10}}/>
       <Button text='Alerta - 3 botones' onPress={createThreeButtonAlert} styles={{marginBottom: 10}} />
-      <Button text='Prompt' onPress={()=>{}} styles={{marginBottom: 10}}/>
+      <Button text='Prompt' onPress={onShowPrompt} styles={{marginBottom: 10}}/>
     </CustomView>
   )
 }
