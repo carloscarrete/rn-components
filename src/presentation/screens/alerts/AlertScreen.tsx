@@ -1,19 +1,24 @@
 import {  Alert, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomView from '../../components/ui/CustomView'
 import Title from '../../components/ui/Title'
 import { globalStyles } from '../../../config/theme/theme'
 import Button from '../../components/ui/Button'
 import prompt from 'react-native-prompt-android';
 import { showPrompt } from '../../../config/adapters/prompt.adapter'
+import { ThemeContext } from '../../context/ThemeContext'
 
 const AlertScreen = () => {
+    const {isDark} = useContext(ThemeContext)
 
     const createTwoButtonAlert = () => {
         Alert.alert('Alert two button', 'This is an alert',[
             {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
             {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ])
+        ],
+        {
+            userInterfaceStyle: isDark ? 'dark' : 'light'
+        })
     }
 
     const createThreeButtonAlert = () => {

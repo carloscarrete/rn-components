@@ -1,10 +1,12 @@
 import { View, Text, Switch } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CustomView from '../../components/ui/CustomView'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import CustomSwitch from '../../components/ui/CustomSwitch'
 import Separetor from '../../components/ui/Separetor'
+import { ThemeContext } from '../../context/ThemeContext'
+import Title from '../../components/ui/Title'
 
 const SwitchScreen = () => {
 
@@ -16,8 +18,11 @@ const SwitchScreen = () => {
         alwaysUpdate: true
     })
 
+    const { color } = useContext(ThemeContext);
+
     return (
-        <CustomView style={{ marginTop: 50, paddingHorizontal: 10 }}>
+        <CustomView margin>
+            <Title text='Switches' />
             <Card>
                 <CustomSwitch
                     isOn={state.isActive}

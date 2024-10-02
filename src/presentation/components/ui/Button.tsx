@@ -1,6 +1,7 @@
-import { View, Text, StyleProp, ViewStyle, Pressable } from 'react-native'
-import React, { PropsWithChildren } from 'react'
-import { colors, globalStyles } from '../../../config/theme/theme'
+import { Text, StyleProp, ViewStyle, Pressable } from 'react-native'
+import React, { PropsWithChildren, useContext } from 'react'
+import { globalStyles } from '../../../config/theme/theme'
+import { ThemeContext } from '../../context/ThemeContext'
 
 interface Props extends PropsWithChildren{
     text: string,
@@ -10,6 +11,10 @@ interface Props extends PropsWithChildren{
 }
 
 const Button = ({onPress,text,styles,children}:Props) => {
+
+  const {color} = useContext(ThemeContext);
+
+
   return (
     <Pressable
         onPress={onPress} 
@@ -17,7 +22,7 @@ const Button = ({onPress,text,styles,children}:Props) => {
             globalStyles.btnPrimary,
             {
                 opacity: pressed ? 0.5 : 1,
-                backgroundColor: colors.primary
+                backgroundColor: color.primary
             },
             styles
         ])
@@ -26,7 +31,7 @@ const Button = ({onPress,text,styles,children}:Props) => {
       <Text style={[
         globalStyles.btnPrimaryText,
         {
-          color: colors.buttonTextColor
+          color: color.buttonTextColor
         }
       ]}>{text}</Text>
     </Pressable>

@@ -1,10 +1,13 @@
 import {  SectionList, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomView from '../../components/ui/CustomView'
 import Title from '../../components/ui/Title'
 import Card from '../../components/ui/Card'
 import { globalStyles } from '../../../config/theme/theme'
 import Separetor from '../../components/ui/Separetor'
+import { useWindowDimensions } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { ThemeContext } from '../../context/ThemeContext'
 
 
 interface Houses {
@@ -90,6 +93,12 @@ interface Houses {
   ];
 
 const CustomSectionListScreen = () => {
+
+    const {height} = useWindowDimensions();
+    const {top} = useSafeAreaInsets();
+    const { color } = useContext(ThemeContext);
+
+
   return (
     <CustomView margin>
         <Title text='Personajes:' />
@@ -97,10 +106,19 @@ const CustomSectionListScreen = () => {
             <SectionList 
             sections={houses}
             keyExtractor={(item, index) => item + index}
-            renderItem={({item}) => <Text>{item}</Text>}
-            renderSectionHeader={({section: {title}}) => <Text style={globalStyles.title}>{title}</Text>}
+            renderItem={({item}) => <Text style={{color: color.text}}>{item}</Text>}
+            renderSectionHeader={({section: {title}}) => <Text style={[globalStyles.title, {color: color.text}]}>{title}</Text>}
             showsVerticalScrollIndicator={false}
             SectionSeparatorComponent={Separetor}
+            ListHeaderComponent={
+                <Text style={[globalStyles.title,  {color: color.text}]}>ListHeaderComponent</Text>
+            }
+            ListFooterComponent={
+                <Text style={[globalStyles.title,  {color: color.text}]}>Secciones: {houses.length}</Text>
+            }
+            style={{
+                height: height - top - 120
+            }}
             />
         </Card>
     </CustomView>
