@@ -15,7 +15,8 @@ const SwitchScreen = () => {
     const [state, setState] = useState({
         isActive: true,
         debugMode: false,
-        alwaysUpdate: true
+        alwaysUpdate: true,
+        globalTimer: false
     })
 
     const { color } = useContext(ThemeContext);
@@ -31,7 +32,7 @@ const SwitchScreen = () => {
                 <Separetor />
 
                 <CustomSwitch
-                    text='Debud Mode'
+                    text='Debug Mode'
                     isOn={state.debugMode}
                     onChange={(value) => setState({ ...state, debugMode: value })
                     }
@@ -40,8 +41,15 @@ const SwitchScreen = () => {
                 <CustomSwitch
                     text='Always Update'
                     isOn={state.alwaysUpdate}
-                    onChange={(value) => setState({ ...state, alwaysUpdate: value })
-                    }
+                    onChange={(value)=>setState({...state, alwaysUpdate: value})
+                }
+                />
+                <Separetor />
+                <CustomSwitch 
+                text='Global Timer'
+                isOn={state.globalTimer}
+                onChange={(value)=>setState({...state, globalTimer: value})
+            }
                 />
             </Card>
         </CustomView>
