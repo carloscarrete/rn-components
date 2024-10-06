@@ -18,7 +18,7 @@ export const showPrompt = ({ text, title, defaultValue, placeholder, type, cance
         buttons,
         {
             type,
-            cancelable: false,
+            cancelable,
             defaultValue,
             placeholder
         }
