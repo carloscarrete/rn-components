@@ -19,6 +19,11 @@ const animationMenuItems = [
     icon: 'albums-outline',
     component: 'Animation102Screen',
   },
+  {
+    name: 'Animation 103',
+    icon: 'color-palette-outline',
+    component: 'Animation103Screen',
+  }
 
 ]
 

@@ -11,6 +11,7 @@ import ModalScreen from "../screens/ui/ModalScreen";
 import InfiniteScrollScreen from "../screens/ui/InfiniteScrollScreen";
 import SlidesScreen from "../screens/ui/SlidesScreen";
 import ChangeThemeScreen from "../screens/theme/ChangeThemeScreen";
+import Animation103Screen from "../screens/animations/Animation103Screen";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const Navigation = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
       <Stack.Screen name="Animation102Screen" component={Animation102Screen} />
+      <Stack.Screen name="Animation103Screen" component={Animation103Screen} />
       <Stack.Screen name="SwitchScreen" component={SwitchScreen} />
       <Stack.Screen name="AlertScreen" component={AlertScreen} />
       <Stack.Screen name="TextInputScreen" component={TextInputScreen} />
